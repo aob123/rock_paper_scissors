@@ -1,62 +1,98 @@
-//const playerOne = "One";
-const playerCPU = "CPU";
+function game(){
 
-//Outputs a random number between 1 & 3.
-function randomNumber(number) {
-     return Math.ceil(Math.random()*3);  
-}
-
-const random = randomNumber();
-
-console.log(random);
-
-//Defines random as rock, paper or scissors.
-function computerPlay() {
-     
-     if (random == 1) {
-         return("Rock");
-         } else if (random == 2) {
-         return("Paper");
-         } else {
-         return("Scissors");
-     }  
-}
-
-console.log(computerPlay());
-
-//Allows the player to select rock, paper or scissors.
-function playerSelection() {
     
- let playerRps = prompt("Please choose rock, paper or scissors");
- 
-     if (playerRps == "rock") {
-         return("You choose rock");
-         } else if (playerRps == "scissors") {
-         return("You choose scissors");
-         } else if (playerRps == "paper") {
-         return("You choose paper");
-     }
- }
 
- console.log(playerSelection());
- 
- const computerSelection = computerPlay();
+    //Returns a random selection for the computer player 
+    function computerPlay() {
+      let selection = ["rock", "paper", "scissors"];
+      const randomNumber = Math.floor(Math.random()*3);
+      return selection[randomNumber];
+      
+    }
+    
+    //Prompts the user to enter a choice
+      function userPlay() {
+      let userChoice = "Hello"; //prompt("Please enter rock, paper or scissors");
+      return userChoice; 
+    }
+    
+    let computerChoice = computerPlay();
+    const userChoice = userPlay();
 
- function playRound(computerSelection, playerSelection) {
-     
-     if (playerSelection == "rock") {
+    //Conditions for a round
+    function playRound(userChoice = "something") {
+
+    if (userChoice === "rock") {
+
+        if (computerChoice === "rock") {
+            return "It's a draw";
+        } else if (computerChoice === "scissors") {
+            return "Rock beats scissors, user wins!";
+        } else {
+            return "Paper beats rock, you lose!";
+        }
+
+    } else if (userChoice === "paper") {
+           
+        if (computerChoice === "paper") {
+            return "It's a draw";
+        } else if (computerChoice === "rock") {
+            return "Paper beats rock, user wins!";
+        } else {
+            return "Scissors beats paper, you lose!";
+        }
+
+    } else if (userChoice === "scissors") {
+
+        if (computerChoice === "scissors") {
+            return "It's a draw";
+        } else if (computerChoice === "paper") {
+            return "Scissors beats paper, user wins!";
+        } else {
+            return "Rock beats scissors, you lose!";
+        }
          
-         if (computerSelection == playerSelection) {
-             return("It's a tie! Please play again..");
-             } else if (computerSelection == "scissors") {
-             return("You win! Rock beats scissors.");
-             } else {
-             return("You loose.. paper beats scissors");
-         }
-        
-     }
-     
- }
- 
- console.log(playRound(computerSelection, playerSelection));
- 
+    } else {
+        return "Please make a valid choice (rock, paper or scissors).";
+    }
+}
+
+    //Line 77 outputs which choices user and computer have made in console.
+    console.log("User picks" + " " + userChoice + "," + " computer picks " + computerChoice);
+    console.log(playRound(userChoice, computerChoice));
+
+    const rock = document.getElementsByClassName('rock');
+    const paper = document.getElementsByClassName('paper');
+    const scissors = document.getElementsByClassName('scissors');
+
+
+    rock[1].addEventListener('click', playRound)
+
+
+}
+
+
+
+
+
+
+ // Game loop
+/**for (let i = 1; 
+     i < 6; 
+     i++) {
+     console.log("Round:" + i);
+     game();
+}
+**/
+
+/** const btn = document.getElementsByClassName('rock');
+
+btn[0].addEventListener('click', buttonClicked);
+
+function buttonClicked(ev) {
+    console.log("Ive been clicked");
+} */
+
+
+
+

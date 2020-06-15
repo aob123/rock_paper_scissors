@@ -2,6 +2,10 @@
 
     <head>
   
+        <link rel = "stylesheet" type = "text/css" href = "styles.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
         <title>Rock, paper & scissors</title>
   
         <meta charset="UTF-8"/>
@@ -9,91 +13,63 @@
     </head>
 
 <body>
+
+    
+<div id ="pageLayout">
   
-    <script>
-       
-       
-     function game(){
+    <h2>Rock, paper & scissors</h2>
 
-     
-       
-       //Returns a random selection for the computer player 
-       
-       function computerPlay() {
-           
-            let selection = ["rock", "paper", "scissors"];
-            const randomNumber = Math.floor(Math.random()*3);
-            return selection[randomNumber];
-        }
-
-        //Prompts the user to enter a choice
-        function userPlay() {
-            let userChoice = prompt("Please enter rock, paper or scissors");
-            return userChoice;
+    <div class = "gameInstructionsBox">
+        <p class = "gameInstructions"> Rules of the game; <br><br>
+            Rock paper scissors is a school yard classic. Each player to the count of three thrusts
+            a closed fist whilst chanting "rock, paper, scissors" before revealing their choice on the third thrust.<br>
+            The player who wins is the one with the dominant hand. <br><br>
+            The order goes; <br>
             
-        }
-       
-        let computerChoice = computerPlay();
-        const userChoice = userPlay();
+            <ol class = "dominantHand"> 
+                <li> Rock beats Scissors</li>
+                <li> Paper beats Rock</li>
+                <li> Scissors beats Paper</li> 
+            </ol>
+        </p>
+    </div>
 
-        //Conditions for a round
-        function playRound(userChoice = "something") {
+    <div id = "gameBox">
 
-            if (userChoice === "rock") {
+        <div class = "gameBoxTitle"> <h3>Please choose your hand and click play;</h3></div>
 
-                if (computerChoice === "rock") {
-                    return "It's a draw";
-                } else if (computerChoice === "scissors") {
-                    return "Rock beats scissors, user wins!";
-                } else {
-                    return "Paper beats rock, you lose!";
-                }
+            <button class = "rock", type = "button"></button>
+            <button class = "paper", type = "button"></button>
+            <button class = "scissors", type = "button"></button>
 
-            } else if (userChoice === "paper") {
-              
-                if (computerChoice === "paper") {
-                    return "It's a draw";
-                } else if (computerChoice === "rock") {
-                    return "Paper beats rock, user wins!";
-                } else {
-                    return "Scissors beats paper, you lose!";
-                }
-
-            } else if (userChoice === "scissors") {
-
-                if (computerChoice === "scissors") {
-                    return "It's a draw";
-                } else if (computerChoice === "paper") {
-                    return "Scissors beats paper, user wins!";
-                } else {
-                    return "Rock beats scissors, you lose!";
-                }
-            
-            } else {
-                return "Please make a valid choice (rock, paper or scissors)."
-            }
-        }
         
-        //Line 77 outputs which choices user and computer have made in console.
-        console.log("User picks" + " " + userChoice + "," + " computer picks " + computerChoice);
-        console.log(playRound(userChoice, computerChoice));
+        
+        <div class = "scoreBox">
 
+            <button class = "button", type = "button">PLAY!</button>
+           
+            <div class = "userPlay"> 
+                
+                <h3>User</h3>
+                <div class = "text"> 1 </div>
 
-    
+            </div>
 
-     }
-    // Game loop
-     for (let i = 1; i < 6; i++) {
-         console.log("Round:" + i);
-         game();
-     }
-   
+            <div class = "userScore"> Score User </div>
 
-    
+            <div class = "computerPlay">
+                <h3>Computer</h3>
+                <div class = "text"> 3 </div>
 
- 
-       
-    </script>
+            </div>
+
+            <div class = "computerScore"> Score CPU </div>
+            
+        </div>        
+
+    </div>
+
+</div>
 
 
 
@@ -102,3 +78,5 @@
 </body>
 
 </html>
+
+<script src ="script.js"> </script>
